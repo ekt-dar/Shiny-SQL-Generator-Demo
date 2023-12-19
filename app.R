@@ -106,7 +106,22 @@ ui <- page_sidebar(
     title = "Tools",
     nav_panel("Data View", !!!cards),
     nav_panel("SQL",
-              verbatimTextOutput("generated_sql")),
+              fluidRow(
+                column(
+                  width = 6,
+                  verbatimTextOutput("generated_sql")
+                ),
+                column(
+                  width = 6,
+                  tags$iframe(
+                    seamless = "seamless",
+                    src = "https://tidydatatutor.com/vis.html#code=library%28dplyr%29%0Alibrary%28palmerpenguins%29%0A%0Aset.seed%282021-12-03%29%0A%0Asample_penguins%20%3C-%20penguins%20%25%3E%25%0A%20%20group_by%28species%29%20%25%3E%25%20%0A%20%20sample_n%283%29%20%25%3E%25%20%0A%20%20select%28species,%20bill_length_mm%29%0A%0Asample_penguins%20%25%3E%25%20%0A%20%20arrange%28bill_length_mm,%20.by_group%20%3D%20TRUE%29&d=2023-12-19&lang=r&v=v1",
+                    height = 800,
+                    width = 1400
+                  )
+                )
+              )
+            ),
     nav_panel("About",
               markdown(about_description)
               )
