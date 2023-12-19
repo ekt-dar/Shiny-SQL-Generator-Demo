@@ -139,7 +139,7 @@ server <- function(input, output) {
 
 
   output$avg_dep_delay_by_carrier_plot <- renderPlot({
-    visualize_avg_dep_delay_by_carrier(analyzed_flights()$avg_dep_delay_by_carrier)
+    visualize_avg_dep_delay_by_destination(analyzed_flights()$avg_dep_delay_by_carrier)
   })
 
   output$monthly_flight_count_plot <- renderPlot({
